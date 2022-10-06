@@ -10,7 +10,7 @@ services:
     volumes:
       - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/rocketmq/logs:/home/rocketmq/logs
     ports:
-      - "9876:9876"
+      - "127.0.0.1:9876:9876"
     command: sh ./mqnamesrv
 
   broker:
@@ -33,10 +33,10 @@ services:
       - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/rocketmq/store:/home/rocketmq/store
     ports:
       # Dashboard pass through
-      - "8080:8080" 
-      - "10909:10909"
-      - "10911:10911"
-      - "10912:10912"
+      - "127.0.0.1:8080:8080" 
+      - "127.0.0.1:10909:10909"
+      - "127.0.0.1:10911:10911"
+      - "127.0.0.1:10912:10912"
     command: |
       bash -c '
       mkdir -p /home/rocketmq/conf && 
