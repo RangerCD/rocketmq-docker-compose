@@ -8,7 +8,7 @@ services:
     environment:
       JAVA_OPT_EXT: -server -Xms256m -Xmx256m -Xmn256m
     volumes:
-      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/rocketmq/logs:/home/rocketmq/logs
+      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/logs:/home/rocketmq/logs
     ports:
       - "127.0.0.1:9876:9876"
     command: sh ./mqnamesrv
@@ -29,8 +29,8 @@ services:
         flushDiskType = ASYNC_FLUSH
         brokerIP1=localhost
     volumes:
-      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/rocketmq/logs:/home/rocketmq/logs
-      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/rocketmq/store:/home/rocketmq/store
+      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/logs:/home/rocketmq/logs
+      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/store:/home/rocketmq/store
     ports:
       # Dashboard pass through
       - "127.0.0.1:8080:8080" 
